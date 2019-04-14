@@ -20,8 +20,11 @@ massive(process.env.CONNECTION_STRING).then(db => {
 // campus routes
 // write a get endpoint that will point to /api/campus_info
 
+app.get("/api/campus_info", campusController.readCampusData);
+
 // student routes
 // write a get endpoint that will point to /api/students
+app.get("/api/students", studentController.getStudents);
 
 app.post("/api/student", studentController.postStudent);
 app.put("/api/student/:student_id/:cohort", studentController.updateStudent);

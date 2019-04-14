@@ -1,7 +1,13 @@
 module.exports = {
   getStudents: (req, res) => {
     //    logic to access db, run the query in get_students.sql
+    const db = req.app.get("db");
     //    send info back to the person who requested it
+    db.get_students()
+      .then(studentInfo => {
+        res.status(200).json(studentInfo);
+      })
+      .catch(err => console.log(err));
   },
   postStudent: (req, res) => {
     const db = req.app.get("db");
